@@ -1,0 +1,4 @@
+* Instructions
+ - Place this into ~~/.emacs.d/~ or wherever your config directory is.
+ - Only works with Emacs 29 and above, although it's trivial to make it work with 28.2
+
