@@ -23,8 +23,8 @@
   :demand t
   :requires (cape)
   :after (tempel)
-  :hook (prog-mode shell-mode eshell-mode vterm-mode lisp-mode)
-  :config (setq completion-cycle-threshold 3 tab-always-indent 'complete corfu-auto t corfu-auto-delay 0.2 corfu-cycle t corfu-quit-no-match t)
+	:init (global-corfu-mode)
+  :custom (completion-cycle-threshold 3) (tab-always-indent 'complete) (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t) (corfu-quit-no-match t)
   :bind (:map corfu-map
 	      ("TAB" . corfu-next)
 	      ("S-TAB" . corfu-previous)))
