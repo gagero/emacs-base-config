@@ -176,7 +176,6 @@
   :demand t
   :bind
   ("C-c C-g c" . magit-commit)
-	("C-c C-g p" . magit-push)
   ("C-c C-g s" . magit-status)
   ("C-c C-g b s" . magit-branch-checkout)
   ("C-c C-g p s" . magit-patch-save))
