@@ -45,9 +45,10 @@
 (use-package undo-tree ;; note: this is a handy tree history browser, but it will pollute your directories with `.file.~undo-tree~` files
   :demand t
   :config (global-undo-tree-mode))
-(use-package flymake
+(use-package flycheck
   :demand t
-  :bind (:map flymake-mode-map)
+	:config (global-flycheck-mode)
+  :bind (:map flycheck-mode-map)
   ("C-c ! n" . flymake-goto-next-error)
   ("C-c ! n" . flymake-goto-prev-error)
   :config
@@ -240,5 +241,19 @@
       (eshell . t)
       (scheme . t)))
    (setq org-src-preserve-indentation t org-src-fontify-natively t org-confirm-babel-evaluate nil)))
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(warning-suppress-types '((comp))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;;; init.el ends here
