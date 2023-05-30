@@ -16,7 +16,6 @@
       (eval-print-last-sexp)))
 (load bootstrap-file nil 'nomessage))
 (setq-default straight-use-package-by-default t)
-(load-theme 'modus-vivendi nil)
 
 ;; global minor modes
 (use-package corfu
@@ -49,11 +48,8 @@
   :demand t
 	:config (global-flycheck-mode)
   :bind (:map flycheck-mode-map)
-  ("C-c ! n" . flymake-goto-next-error)
-  ("C-c ! n" . flymake-goto-prev-error)
-  :config
-  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
-  :hook c-mode)
+  ("C-c ! n" . flycheck-goto-next-error)
+  ("C-c ! n" . flycheck-goto-prev-error))
 (use-package vertico
   :demand t
   :config (vertico-mode))
@@ -153,15 +149,14 @@
 (setq debug-on-error t)
 (setq load-prefer-newer t)
 (setq sentence-end-double-space t)
-;; (setq-default compile-command "make -j16")
 (setq make-backup-files nil select-enable-clipboard t)
-;; (defalias 'yes-or-no-p 'y-or-n-p)
+;; (defalias 'yes-or-no-p 'y-or-n-p) ;;  uncomment for more convenient prompts, might be a bit unsafe
 (setq inital-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
 (setq next-line-add-newlines t)
 
-;; removes keybindings to overwrite-mode (similiar to the R key in Vim)
-(unbind-key (kbd "<insert>"))
-(unbind-key (kbd "<insertchar>"))
+;; unbinds
+(unbind-key (kbd "<insert>")) ;; overwrite-mode
+(unbind-key (kbd "<insertchar>")) ;; overwrite-mode
 
 ;; LSP
 (use-package eglot
@@ -254,6 +249,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+)
 
 ;;; init.el ends here
