@@ -22,8 +22,8 @@
   :demand t
   :requires (cape)
   :after (tempel)
-	:init (global-corfu-mode)
-  :custom (completion-cycle-threshold 3) (tab-always-indent 'complete) (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t) (corfu-quit-no-match t)
+	:config (global-corfu-mode)
+  :custom (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t)
   :bind (:map corfu-map
 	      ("TAB" . corfu-next)
 	      ("S-TAB" . corfu-previous)))
@@ -153,7 +153,8 @@
 ;; (defalias 'yes-or-no-p 'y-or-n-p) ;;  uncomment for more convenient prompts, might be a bit unsafe
 (setq inital-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
 (setq next-line-add-newlines t)
-
+(setq completion-cycle-threshold 3)
+(setq tab-always-indent 'complete)
 ;; unbinds
 (unbind-key (kbd "<insert>")) ;; overwrite-mode
 (unbind-key (kbd "<insertchar>")) ;; overwrite-mode
