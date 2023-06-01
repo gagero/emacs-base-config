@@ -48,8 +48,8 @@
   :demand t
 	:config (global-flycheck-mode)
   :bind (:map flycheck-mode-map)
-  ("M-n" . flycheck-goto-next-error)
-  ("M-p" . flycheck-goto-prev-error))
+  ("M-n" . flycheck-next-error)
+  ("M-p" . flycheck-previous-error))
 (use-package vertico
   :demand t
   :config (vertico-mode))
