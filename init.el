@@ -77,12 +77,12 @@
   :init
   ;; Setup completion at point
   (defun tempel-setup-capf ()
-    ;; Add the Tempel Capf to `completion-at-point-functions'.
-    ;; `tempel-expand' only triggers on exact matches. Alternatively use
-    ;; `tempel-complete' if you want to see all matches, but then you
-    ;; should also configure `tempel-trigger-prefix', such that Tempel
+    ;; Add the Tempel Capf to 'completion-at-point-functions'.
+    ;; 'tempel-expand' only triggers on exact matches. Alternatively use
+    ;; 'tempel-complete' if you want to see all matches, but then you
+    ;; should also configure 'tempel-trigger-prefix', such that Tempel
     ;; does not trigger too often when you don't expect it. NOTE: We add
-    ;; `tempel-expand' *before* the main programming mode Capf, such
+    ;; 'tempel-expand' *before* the main programming mode Capf, such
     ;; that it will be tried first.
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand
@@ -174,8 +174,9 @@
   :bind
   ("C-c C-g c" . magit-commit)
   ("C-c C-g s" . magit-status)
-  ("C-c C-g b s" . magit-branch-checkout)
-  ("C-c C-g p s" . magit-patch-save))
+  ("C-c C-g b c" . magit-branch-checkout)
+  ("C-c C-g p s" . magit-patch-save)
+	("C-c C-g p" . magit-push))
 
 ;; Debug
 (defun debug-gud ()
@@ -208,6 +209,10 @@
 (use-package rainbow-delimiters
   :defer t
   :hook (lisp-mode emacs-lisp-mode scheme-mode))
+
+;; Dired
+(use-package all-the-icons-dired
+	:hook (dired-mode . all-the-icons-dired-mode))
 
 ;; Org
 (use-package org
