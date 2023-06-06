@@ -22,7 +22,7 @@
   :demand t
   :requires (cape)
   :after (tempel)
-	:config (global-corfu-mode)
+	:init (global-corfu-mode)
   :custom (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t)
   :bind (:map corfu-map
 	      ("TAB" . corfu-next)
@@ -173,18 +173,15 @@
   :demand t
   :bind
   ("C-c C-g c" . magit-commit)
-  ("C-c C-g s" . magit-status)
-  ("C-c C-g b c" . magit-branch-checkout)
-  ("C-c C-g p s" . magit-patch-save)
-	("C-c C-g p" . magit-push))
+  ("C-c C-g s" . magit-status))
 
 ;; Debug
 (defun debug-gud ()
   "GUD setup for Rust and core files."
   (interactive)
   (cond ((and (or (equal major-mode 'c-mode) (equal major-mode 'c++-mode)) (file-exists-p "./core"))
-	 ((setq gud-gdb-command-name "gdb -i=mi ./core") (gud-gdb)))
-	((equal major-mode 'rust-mode) (rust-gdb))))
+				 ((setq gud-gdb-command-name "gdb -i=mi ./core") (gud-gdb)))
+				((equal major-mode 'rust-mode) (rust-gdb))))
 
 ;; Lisp
 (use-package paredit
