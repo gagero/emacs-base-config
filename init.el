@@ -103,15 +103,15 @@
 ;; 	("C-M-SPC" . embark-act)
 ;; 	("C-." . embark-dwim)
 ;; 	("M-/" . embark-export))
-(use-package helpful
-  :demand t
-  :bind
-  (("C-h f" . helpful-callable)
-   ("C-h v" . helpful-variable)
-   ("C-h k" . helpful-key)
-   ("C-h F" . helpful-function)
-   ("C-h C" . helpful-command)
-   ("C-c C-d" . helpful-at-point)))
+;; (use-package helpful ;; seems to be broken in 29.0.91, but fixed 30.0.50
+;;   :demand t
+;;   :bind
+;;   (("C-h f" . helpful-callable)
+;;    ("C-h v" . helpful-variable)
+;;    ("C-h k" . helpful-key)
+;;    ("C-h F" . helpful-function)
+;;    ("C-h C" . helpful-command)
+;;    ("C-c C-d" . helpful-at-point)))
 
 (use-package treesit-auto
   :config (global-treesit-auto-mode))
@@ -129,12 +129,13 @@
   (interactive)
   (indent-region 0 (buffer-size)))
 
-(require 'eglot)
-(require 'cape)
-(require 'tempel)
-(defun eglot-cape-tempel-capf ()
-  (setq-local completion-at-point-functions
-	      (list (cape-super-capf #'eglot-completion-at-point #'tempel-expand #'cape-file))))
+(use-package eglot-super-capf
+	:demand t
+	:requires (eglot cape tempel)
+	:config
+	(defun eglot-cape-tempel-capf ()
+		(setq-local completion-at-point-functions
+								(list (cape-super-capf #'eglot-completion-at-point #'tempel-expand #'cape-file)))))
 
 ;; global settings
 (electric-pair-mode)
