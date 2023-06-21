@@ -25,7 +25,7 @@
   :requires (cape)
   :after (tempel)
 	:init (global-corfu-mode)
-  :custom (completion-cycle-threshold 3) (tab-always-indent 'complete) (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t) (corfu-quit-no-match t)
+  :custom (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t)
   :bind (:map corfu-map
 	      ("TAB" . corfu-next)
 	      ("S-TAB" . corfu-previous)))
@@ -46,13 +46,12 @@
 (use-package undo-tree ;; note: this is a handy tree history browser, but it will pollute your directories with `.file.~undo-tree~` files
   :demand t
   :config (global-undo-tree-mode))
-(use-package flymake
+(use-package flycheck
   :demand t
-  :bind (:map flymake-mode-map)
-  ("C-c ! n" . flymake-goto-next-error)
-  ("C-c ! n" . flymake-goto-prev-error)
-  :config
-  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
+  :bind (:map flycheck-mode-map)
+  ("M-n" . flycheck-next-error)
+  ("M-p" . flycheck-previous-error)
+	:config (global-flycheck-mode)
   :hook c-mode)
 (use-package vertico
   :demand t
@@ -153,9 +152,11 @@
 (setq sentence-end-double-space t)
 ;; (setq-default compile-command "make -j16")
 (setq make-backup-files nil select-enable-clipboard t)
-;; (defalias 'yes-or-no-p 'y-or-n-p)
+;; (defalias 'yes-or-no-p 'y-or-n-p) ;; uncomment for more convenient prompts, might be a bit unsafe
 (setq inital-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
 (setq next-line-add-newlines t)
+(setq completion-cycle-threshold 3)
+(setq tab-always-indent 'complete)
 
 ;; removes keybindings to overwrite-mode (similiar to the R key in Vim)
 (unbind-key (kbd "<insert>"))
