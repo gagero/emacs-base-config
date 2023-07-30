@@ -20,10 +20,8 @@
 ;; global minor modes
 (use-package corfu
   :demand t
-  :requires (cape)
-  :after (tempel)
-	:init (global-corfu-mode)
-  :custom (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t)
+	:hook (prog-mode . corfu-mode)
+  :custom (corfu-auto t) (corfu-auto-delay 0.2) (corfu-cycle t) (corfu-quit-no-match t) (corfu-preselect 'prompt)
   :bind (:map corfu-map
 	      ("TAB" . corfu-next)
 	      ("S-TAB" . corfu-previous)))
@@ -33,10 +31,7 @@
 (use-package cape
   :demand t
   :config
-  (add-to-list 'completion-at-point-functions 'cape-keyword)
-  (add-to-list 'completion-at-point-functions 'cape-dict)
-  (add-to-list 'completion-at-point-functions 'cape-file)
-  (add-to-list 'completion-at-point-functions 'cape-line))
+	(setq completion-at-point-functions (list (cape-super-capf #'cape-keyword #'cape-file #'cape-dabbrev))))
 (use-package which-key
   :demand t
   :config
