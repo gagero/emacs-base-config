@@ -125,7 +125,7 @@
 ;; global functions
 
 (defun indent-buffer ()
-  "Indents the entire buffer."
+  "Indent the entire buffer."
   (interactive)
   (indent-region 0 (buffer-size)))
 
@@ -173,8 +173,7 @@
 (use-package magit
   :demand t
   :bind
-  ("C-c C-g c" . magit-commit)
-  ("C-c C-g s" . magit-status))
+  ("C-c g" . magit))
 
 ;; Debug
 (defun debug-gud ()
