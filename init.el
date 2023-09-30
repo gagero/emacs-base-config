@@ -146,6 +146,7 @@
 (setq load-prefer-newer t)
 (setq sentence-end-double-space t)
 (setq make-backup-files nil select-enable-clipboard t)
+(setq gc-cons-threshold (* 100 1024 1024))
 ;; (defalias 'yes-or-no-p 'y-or-n-p) ;;  uncomment for more convenient prompts, might be a bit unsafe
 (setq inital-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
 (setq next-line-add-newlines t)
