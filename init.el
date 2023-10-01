@@ -109,7 +109,7 @@
 ;;    ("C-c C-d" . helpful-at-point)))
 
 (use-package treesit-auto
-  :config (global-treesit-auto-mode))
+  :config (setq treesit-auto-langs '()) (global-treesit-auto-mode)) ;; don't forget to set treesit-auto-langs to the languages you want to install, then run `treesit-auto-install-all`
 ;; (use-package bufler ;; makes `switch-buffer` nicer, but more verbose
 ;; 	:demand t
 ;; 	:config (bufler-mode)
